@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    online_chat_flask:
+        build: .
+        ports:
+            - "8889:8889"
+        volumes:
+            - .:/code
+        depends_on:
+            - online_chat_redis
+    online_chat_redis:
+        image: redis
+        ports:
+            - "6379:6379"

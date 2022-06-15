@@ -12,7 +12,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     SECRET_KEY = "hardtohard"
-    # SQLALCHEMY_DATABASE_URI = "sqlite:////test.db"
+    # SQLALCHEMY_DATABASE_URI = "sqlite:////root/db/test.db"
     EXPARE_TIME = 604800  # 7 天
     JOBS = []
     SQLALCHEMY_TRACK_MODIFICATIONS = True

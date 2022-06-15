@@ -5,6 +5,7 @@
 """
 
 from flask import Flask
+from flask_cors import CORS
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
@@ -27,6 +28,9 @@ sch = Scheduler(86400, keep_msg)
 
 def create_app(config_name):
     app = Flask(__name__)
+
+    cors = CORS(app, resources={"*": {"origins": "*"}})  # 跨域
+
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)  # ?
 
@@ -38,7 +42,7 @@ def create_app(config_name):
 
     from .main import main as main_blueprint
 
-    app.register_blueprint(main_blueprint)  # ?
+    app.register_blueprint(main_blueprint)
 
     # from .chatbot import chatbot as chatbot_blueprint
     # app.register_blueprint(chatbot_blueprint)

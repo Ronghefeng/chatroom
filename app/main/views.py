@@ -104,7 +104,13 @@ def login():
 def login_check():
     username = request.form.get("Username", "")
     password = request.form.get("Password", "")
-    user = User.query.filter_by(username=username).first()
+
+    user = User(username=username, password=password)
+    db.session.add(user)
+    db.session.commit()
+
+    # user = User.query.filter_by(username=username).first()
+
     if request.method == "POST":
         if user is not None and user.verify_password(password):
             login_user(user)
@@ -140,16 +146,19 @@ def chat_room_list():
     roomlist = []
     can_create = False
     create_room = Permission.query.filter_by(permission_name="createroom").first()
-    if current_user.is_authenticated:
-        rel_user_id = RelUserPermission.query.filter_by(user_id=current_user.id).first()
-        rel_permission = RelUserPermission.query.filter_by(
-            user_id=current_user.id
-        ).first()
-        if rel_permission and rel_user_id and create_room:
-            rel_permission_id = rel_permission.permission_id
-            create_room_id = create_room.id
-            if rel_permission_id == create_room_id:
-                can_create = True
+
+    can_create = True
+    # if current_user.is_authenticated:
+    #     rel_user_id = RelUserPermission.query.filter_by(user_id=current_user.id).first()
+    #     rel_permission = RelUserPermission.query.filter_by(
+    #         user_id=current_user.id
+    #     ).first()
+    #     if rel_permission and rel_user_id and create_room:
+    #         rel_permission_id = rel_permission.permission_id
+    #         create_room_id = create_room.id
+    #         if rel_permission_id == create_room_id:
+    #             can_create = True
+
     for i in roomlist_tmp:
         i_str = str(i)
         istr_list = i_str.split("-", 1)
