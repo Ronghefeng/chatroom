@@ -6,7 +6,7 @@
 
 
 import os
-from app import create_app, socketio, sch
+from app import create_app, socketio, sch, db
 
 
 app = create_app(os.getenv("FLASK_CONFIG") or "default")

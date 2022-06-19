@@ -44,6 +44,11 @@ def create_app(config_name):
 
     app.register_blueprint(main_blueprint)
 
+    with app.app_context():
+
+        db.drop_all()  # 删除存在表
+        db.create_all()  # 创建这两个表
+
     # from .chatbot import chatbot as chatbot_blueprint
     # app.register_blueprint(chatbot_blueprint)
 

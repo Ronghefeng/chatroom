@@ -19,7 +19,7 @@ def load_user(user_id):
 
 
 class User(UserMixin, db.Model):
-    __tablename__ = 'users'
+    __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
 
     @property
     def password(self):
-        raise AttributeError('password is not a readable attribute')
+        raise AttributeError("password is not a readable attribute")
 
     @password.setter
     def password(self, password):
@@ -36,30 +36,29 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def gravatar(self, name=None, size=100, default='identicon', rating='g'):
+    def gravatar(self, name=None, size=100, default="identicon", rating="g"):
         if request.is_secure:
-            url = 'https://secure.gravatar.com/avatar'
+            url = "https://secure.gravatar.com/avatar"
         else:
-            url = 'http://www.gravatar.com/avatar'
+            url = "http://www.gravatar.com/avatar"
         if name is not None:
             email = name + "@hihichat.com"
         else:
             email = self.username + "@hihichat.com"
-        myhash = self.avatar_hash or hashlib.md5(email.encode('utf-8')).hexdigest()
-        return '{url}/{hash}?s={size}&d={default}&r={rating}'.format(url=url, hash=myhash, size=size,
-                                                                     default=default, rating=rating)
+        myhash = self.avatar_hash or hashlib.md5(email.encode("utf-8")).hexdigest()
+        return "{url}/{hash}?s={size}&d={default}&r={rating}".format(
+            url=url, hash=myhash, size=size, default=default, rating=rating
+        )
 
 
 class Permission(db.Model):
-    __tablename__ = 'permissions'
+    __tablename__ = "permissions"
     id = db.Column(db.Integer, primary_key=True)
     permission_name = db.Column(db.String(64), unique=True, index=True)
 
 
 class RelUserPermission(db.Model):
-    __tablename__ = 'reluserpermission'
+    __tablename__ = "reluserpermission"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     permission_id = db.Column(db.Integer)
-
-
