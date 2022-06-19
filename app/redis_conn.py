@@ -5,11 +5,14 @@
 """
 
 import redis, os
+from . import config
 
 
 def redis_conn_pool():
 
-    host = os.getenv("FLASK_CONFIG") or "default"
+    config_content = os.getenv("FLASK_CONFIG") or "default"
+
+    host = config[config_content]().REDIS_HOST
 
     pool = redis.ConnectionPool(host=host, port=6379, decode_responses=True)
     r = redis.Redis(connection_pool=pool)

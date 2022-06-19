@@ -16,6 +16,7 @@ class Config:
     EXPARE_TIME = 604800  # 7 天
     JOBS = []
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    REDIS_HOST = "localhost"
 
     @staticmethod
     def init_app(app):
@@ -32,6 +33,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@online_chat_mysql:3306/chat"
+    REDIS_HOST = "online_chat_redis"
 
 
 config = {
