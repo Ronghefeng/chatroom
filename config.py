@@ -31,7 +31,7 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@online_chat_mysql:3306/chat"
 
 
 config = {
