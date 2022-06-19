@@ -10,4 +10,5 @@ workspace.xml
 .idea
 .venv
 .vscode/
+.envgit rm env.local --cached
 .env
