@@ -17,6 +17,7 @@ class Config:
     JOBS = []
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     REDIS_HOST = "localhost"
+    REDIS_HOST_PORT = 6379
 
     @staticmethod
     def init_app(app):
@@ -28,12 +29,15 @@ class DevelopmentConfig(Config):
 
 
 class TestingConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@39.103.160.30:33066/chat"
+    REDIS_HOST = "39.103.160.30"
+    REDIS_HOST_PORT = 63799
 
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@online_chat_mysql:3306/chat"
     REDIS_HOST = "online_chat_redis"
+    REDIS_HOST_PORT = 63799
 
 
 config = {
