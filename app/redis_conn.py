@@ -1,9 +1,3 @@
-# coding = utf-8
-"""
-@author: zhou
-@time:2019/6/25 18:54
-"""
-
 import redis, os
 from . import config
 

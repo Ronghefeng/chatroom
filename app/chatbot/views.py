@@ -1,8 +1,3 @@
-# coding = utf-8
-"""
-@author: zhou
-@time:2019/6/25 20:09
-"""
 import os
 
 from chatterbot import ChatBot

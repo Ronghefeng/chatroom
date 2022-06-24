@@ -1,10 +1,3 @@
-# coding = utf-8
-"""
-@author: zhou
-@time:2019/6/20 10:33
-"""
-
-
 from . import db
 from . import login_manager
 from flask_login import UserMixin

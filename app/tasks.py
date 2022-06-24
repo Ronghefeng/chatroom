@@ -1,9 +1,3 @@
-# coding = utf-8
-"""
-@author: zhou
-@time:2019/6/25 16:47
-"""
-
 from threading import Timer
 from .redis_conn import redis_conn_pool
 import time

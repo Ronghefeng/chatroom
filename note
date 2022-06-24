@@ -1,0 +1,6 @@
+生成依赖文件：
+    pip freeze > requirements.txt
+开启项目shell环境：
+    1、export FLASK_APP=manage
+    2、flask shell
+    

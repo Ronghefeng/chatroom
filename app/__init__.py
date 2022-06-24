@@ -1,9 +1,3 @@
-# coding = utf-8
-"""
-@author: zhou
-@time:2019/6/20 10:29
-"""
-
 from flask import Flask
 from flask_cors import CORS
 from flask_login import LoginManager
@@ -44,10 +38,10 @@ def create_app(config_name):
 
     app.register_blueprint(main_blueprint)
 
-    # with app.app_context():
+    # with app.app_context(): # 必须先创建上下文对象指向当前应用
 
-    #     db.drop_all()  # 删除存在表
-    #     db.create_all()  # 创建这两个表
+    # db.drop_all()  # 删除存在表
+    # db.create_all()  # 创建这两个表
 
     # from .chatbot import chatbot as chatbot_blueprint
     # app.register_blueprint(chatbot_blueprint)

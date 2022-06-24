@@ -1,10 +1,3 @@
-# coding = utf-8
-"""
-@author: zhou
-@time:2019/6/20 10:33
-"""
-
-
 import os
 from app import create_app, socketio, sch, db
 
