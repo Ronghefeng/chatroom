@@ -23,15 +23,15 @@ class DevelopmentConfig(Config):
 
 
 class TestingConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@39.103.160.30:33066/chat"
-    REDIS_HOST = "39.103.160.30"
-    REDIS_HOST_PORT = 63799
+    SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI_DEV")
+    REDIS_HOST = os.getenv("REDIS_HOST_DEV")
+    REDIS_HOST_PORT = os.getenv("REDIS_HOST_PORT")
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123456@online_chat_mysql:3306/chat"
-    REDIS_HOST = "online_chat_redis"
-    REDIS_HOST_PORT = 63799
+    SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI_PROD")
+    REDIS_HOST = os.getenv("REDIS_HOST_PROD")
+    REDIS_HOST_PORT = os.getenv("REDIS_HOST_PORT")
 
 
 config = {
