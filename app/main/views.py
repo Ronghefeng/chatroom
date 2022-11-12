@@ -1,4 +1,5 @@
-from flask import render_template, redirect, url_for, request, current_app
+import random
+from flask import render_template, redirect, url_for, request, current_app, Response
 from flask_login import login_required, login_user, logout_user, current_user
 from . import main
 from .. import db
@@ -350,3 +351,11 @@ def kick_roomuser():
     del_user = request.args.get("del_user", "")
     r.zrem("chat-" + rname, del_user)
     return redirect(url_for("main.room_user_list", rname=rname))
+
+
+@main.route('/upload/', methods=['POST'])
+def upload_file():
+
+    file_url = 'tests/{}'.format(request.form.get('subPath'))
+
+    return Response(json.dumps({'data': [file_url]}), mimetype='application/json')
